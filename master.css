@@ -1,0 +1,744 @@
+/* STYLES */
+
+body, html {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body.black a:hover{
+    text-decoration: underline;
+    color: gray;
+}
+
+body.white a:hover{
+    text-decoration: underline;
+    color: black;
+}
+
+.black {
+    background-color: #000000;
+    color: white;
+}
+
+.white {
+    background-color: #ffffff;
+    color: gray;
+}
+  
+/* CUSTOM CURSOR */
+
+.custom-cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    mix-blend-mode: difference;
+    border-radius: 50%;  /* Initial circle shape */
+    pointer-events: none;
+    transition: transform 0.05s ease-in-out, width 0.2s ease, height 0.2s ease;
+    z-index: 9999;  /* Ensure it's on top of everything */
+}
+
+/* Hide the default cursor on the entire page */
+html, body {
+    cursor: none !important;  /* Force cursor: none on the entire page */
+    margin: 0;
+    padding: 0;
+    overflow: auto;  /* Allow scrolling */
+}
+
+/* Prevent the default cursor on interactive elements like links and buttons */
+a, button, input, textarea, select {
+    cursor: none !important; /* Ensure the default hand cursor is hidden */
+}
+  
+/* Prevent interference from <object> elements */
+object {
+    pointer-events: none;
+}
+  
+/* Ensure cursor doesn't show up on pseudo-elements */
+  *::before, *::after {
+    cursor: none !important; /* Apply to any pseudo-elements like ::before or ::after */
+}  
+ 
+/* LOAD FONTS */
+
+@font-face {
+    font-family: 'ABC Favorit';
+    src: url('/fonts/ABCFavorit-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'ABC Favorit Book';
+    src: url('/fonts/ABCFavorit-Book.woff') format('woff');
+}
+
+/* DIVIDER */
+
+hr {
+    border: 0;
+    height: 2px;
+    background: gray; /* Change the color as needed */
+    margin: 0 5%;
+}
+
+/* LINKS */
+
+a {
+    position: relative;
+    text-decoration: none;
+    z-index: 10;
+    color: inherit;
+    cursor: pointer; /* Ensure a pointer cursor appears */
+}
+
+/* IMAGES */
+
+img {
+    width: 100%; /* Ensure images take up the full width of their container */
+    height: auto; /* Maintain aspect ratio */
+    padding-bottom: 10px;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background-color: transparent;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    padding: 1%;
+}
+
+.nav-right {
+    display: flex;
+    gap: 20px;
+    margin-left: auto;
+    padding: 1%;
+}
+
+/* ABOUT */
+
+.about {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: fit-content;
+    gap: 50px;
+    padding: 40px 5%;
+    justify-content: center;
+}
+
+.intro {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 700px;
+    will-change: opacity, transform; /* Add will-change property */
+}
+
+/* .bio container */
+.title {
+    /* Auto layout */
+    font-weight: 500;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    will-change: opacity, transform; /* Add will-change property */
+    flex-wrap: wrap; /* Allow wrapping in case there’s not enough space */
+}
+
+/* .bio container */
+.bio {
+    /* Auto layout */
+    width: 60vw;
+    letter-spacing: 0%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    will-change: opacity, transform; /* Add will-change property */
+    flex-wrap: wrap; /* Allow wrapping in case there’s not enough space */
+}
+
+/* Styling for each individual word inside .bio */
+.bio span {
+    display: inline-block; /* Ensure spans are inline-block to allow for animation */
+    opacity: 0; /* Start from invisible for animation */
+    transform: translateY(50px); /* Start from below for animation */
+}
+
+.resume {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    padding: 20px 5%;
+    justify-content: space-between;
+}
+
+.resume-items {
+    display: flex;
+    width: 20vw;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    will-change: opacity, transform; /* Add will-change property */
+}
+
+/* MENU */
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.square {
+    width: 200px;
+    height: 200px;
+    border-radius: 70px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.box {
+    width: 200px;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+  
+/* COLORS */
+
+.gray {
+    background-color: #D9D9D9;
+}
+
+.yellow {
+    background-color: #FEFDD9;
+}
+
+.green {
+    background-color: #01B116;
+}
+
+.blue {
+    background-color:#bef4f4;
+}
+
+.pink {
+    background-color: #F4B1BE;
+}
+
+/* MENU FILTER */
+
+[data-filter] {
+    transition: opacity 0.3s ease-in-out;  /* Smooth transition for opacity */
+}
+
+/* Apply smooth transitions for opacity */
+.item, .link, .img{
+    opacity: 1; /* Default visibility */
+    transition: opacity .5s ease-in-out; /* Slow fade transition for opacity */
+}
+
+/* Hidden items: opacity 0 (fade out) */
+.item.hidden, .link.hidden {
+    opacity: 0; /* Fade out */
+}
+
+/* PAGE LINKS */
+
+.link {
+    position: relative;
+    display: inline-block; /* Adjust as needed for layout */
+}
+
+.link .square {
+    display: block; /* Ensures proper alignment */
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: inherit;
+    font-weight: bold; /* Optional */
+    pointer-events: none; /* Prevent text from interfering with interaction */
+    z-index: 0; /* Ensure proper stacking order */
+}
+
+.centered a {
+    pointer-events: auto;
+}
+
+a:visited {
+    color: inherit;
+}
+
+.link .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none; /* Ensures text doesn't interfere with image interaction */
+}
+
+/* PROJECT PAGES */
+
+.project {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: fit-content;
+    padding: 20px 5%;
+    justify-content: center;
+    will-change: opacity, transform;
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: row;
+    margin:0;
+    gap: 10px;
+    height: fit-content;
+    align-items: start;
+}
+
+.heading {
+    padding-right: 30%;
+}
+
+.flex-item {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    width: 50%;
+}
+
+.flex-frame {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    margin-right: 5%;
+    width: 50%;
+}
+
+.frame-item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0;
+    width: 60%;
+}
+
+.centered-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text within the flex-item */
+    width: 20%;
+    margin-bottom: 20px; /* Add some space between the items */
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    padding: 20px;
+}
+
+.product img {
+    max-height: 100vh;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.wireframe {
+    outline: 1px solid #000000; /* Adjust the color and width as needed */
+    margin-bottom: 10px;
+    padding-bottom: 0; /* Remove any default padding */
+    display: block; /* Ensure the image is displayed as a block element */
+}
+
+.project img, .flex-item img, .flex-item, .frame-item {
+    will-change: transform, opacity;  /* Tell the browser that these properties will change */
+    transform: translateY(0);  /* Make sure they start at the correct position */
+}
+
+/* WINDOWS */
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 7px;
+    justify-content: space-between;
+    height: fit-content;
+}
+
+.rectangle {
+    height: 200px;
+    width: max-content;
+}
+
+.tube {
+    min-width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-grow:1;
+    box-sizing: border-box;
+}
+
+.tube h3 {
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Ensure the text takes up the full width of the container */
+    text-align: center; /* Center text within the element */
+    line-height: 1.2; /* Adjust line height for better readability */
+    display: flex;
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center text vertically */
+    flex-wrap: wrap; /* Ensure text wraps within the container */
+    height: 100%; /* Ensure the text element takes up the full height of the container */
+}
+
+/* WINDOWS */
+.content {
+   padding-top: 20px;
+}
+
+/* TYPE */
+
+header {
+    font-family: 'ABC Favorit';
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 4px;
+    text-align: left;
+}
+
+h1, h2, h3, p {
+    margin-top: 1%; /* Adjust this value to decrease space above text elements */
+    margin-bottom: 1%; /* Adjust this value to decrease space below text elements */
+}
+
+h1 {
+    font-family: 'ABC Favorit';
+    font-size: 72px;
+    line-height: 72px;
+    font-weight: 500;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+h2 {
+    font-family: 'ABC Favorit Book';
+    font-size: 7vh;
+    line-height: 7vh;
+    font-weight: 500;
+    letter-spacing: 0%;
+    padding: 1% 0;
+    margin: 0px;
+}
+
+h3 {
+    font-family: 'ABC Favorit';
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 4px;
+    text-align: left;
+}
+
+p {
+    font-family: 'ABC Favorit Book';
+    font-size: 15px;
+    margin: 0;
+    line-height: 18px;
+    letter-spacing: .5px;
+}
+
+/* Media query for screens smaller than 1200px (mobile devices) */
+@media (max-width: 1200px) {
+
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-top: 60px;
+}
+
+.about-item {
+    width: auto;
+}
+}
+
+/* Media query for screens smaller than 480px (mobile devices) */
+@media (max-width: 480px) {
+
+/* CUSTOM CURSOR */
+
+.custom-cursor {
+    display: none;
+}
+
+/* Restore the default cursor on the entire page */
+html, body {
+    cursor: auto !important;
+    width: 100%;
+}
+
+/* Restore the default cursor on interactive elements like links and buttons */
+a, button, input, textarea, select {
+    cursor: pointer !important;
+}
+  
+/* Ensure cursor doesn't show up on pseudo-elements */
+  *::before, *::after {
+    cursor: default;
+}  
+
+/* NAVIGATION */
+
+.navbar {
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+    background-color: transparent;
+}
+
+.nav-right {
+    display: flex;
+    gap: 5px;
+    margin-left: auto;
+    padding: 8% 5%;
+}
+
+/* ABOUT */
+
+.resume {
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0;
+    gap: 20px;
+}
+
+.resume-items {
+    width: 100%;
+    align-items: left;
+    text-align: left;
+}
+
+.bio {
+    /* Auto layout */
+    width: 90vw;
+}
+
+/* MENU */
+
+.circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+}
+
+.square {
+    width: 150px;
+    height: 150px;
+    border-radius: 40px;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+}
+
+.circle, .square, .box {
+    margin: 0;
+    padding: 0;
+}
+
+/* PROJECT PAGES */
+
+.project {
+    margin: 0;
+    padding: 10px;
+}
+
+.flexbox {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.heading {
+    padding-right: 0;
+}
+
+.flexbox:has(img) {
+    gap: 0;
+}
+
+.flex-item:has(button) {
+    gap: 20px;
+}
+
+.flexbox .heading {
+    gap: 20px;
+}
+
+.flex-item, .frame-item, .centered-item {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+}
+
+.flex-item:has(.heading) {
+    gap: 20px;
+}
+
+.frame-item:has(.heading) {
+    gap: 20px;
+}
+
+.flex-frame {
+    width: 100%;
+    gap: 10px;
+}
+
+.flexbox:has(.centered-item) {
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 20%;
+}
+
+.zoom-image {
+    transform: scale(1.15);
+    transform-origin:center center;
+}
+
+.row {
+    gap: 0;
+    justify-content: space-evenly;
+}
+
+/* DIVIDER */
+
+hr {
+    margin: 0;
+    margin: 20px;
+}
+
+/* IMAGE */
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+/* TYPE */
+
+h1 {
+    font-family: 'ABC Favorit';
+    font-size: 8vh;
+    line-height: 8vh;
+    font-weight: 500;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+h2 {
+    font-family: 'ABC Favorit Book';
+    font-size: 5vh;
+    line-height: 5vh;
+    font-weight: 500;
+    letter-spacing: 0%;
+    padding: 1% 0;
+    margin: 0px;
+}
+
+header {
+    font-family: 'ABC Favorit Book';
+    font-size: 13px;
+    line-height: 15px;
+}
+
+p {
+    font-family: 'ABC Favorit Book';
+    font-size: 15px;
+    margin: 0;
+    line-height: 18px;
+    letter-spacing: .5px;
+}
+
+.tube {
+    min-width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-grow:1;
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: fit-content;
+}
+
+.row .circle {
+    height: 80px;
+    width: 80px;
+    border-radius: 80px;
+}
+
+.rectangle {
+    height: 80px;
+}
+}
